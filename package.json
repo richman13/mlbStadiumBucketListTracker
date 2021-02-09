@@ -1,0 +1,22 @@
+{
+  "type": "module",
+  "private": true,
+  "workspaces": [
+    "server",
+    "client",
+    "e2e"
+  ],
+  "scripts": {
+    "build:client": "yarn workspace mlbStadiumBucketListTracker-client build",
+    "dev": "yarn workspace mlbStadiumBucketListTracker-server dev",
+    "dev:debug": "yarn workspace mlbStadiumBucketListTracker-server dev:debug",
+    "heroku-postbuild": "yarn workspace mlbStadiumBucketListTracker-client build",
+    "start": "yarn workspace mlbStadiumBucketListTracker-server start",
+    "dev:cypress": "yarn workspace mlbStadiumBucketListTracker-server dev:e2e",
+    "e2e:open": "yarn workspace mlbStadiumBucketListTracker-e2e e2e:open",
+    "e2e:run": "yarn workspace mlbStadiumBucketListTracker-e2e e2e:run"
+  },
+  "engines": {
+    "node": "^14.15"
+  }
+}
