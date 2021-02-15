@@ -12,7 +12,7 @@ exports.up = async (knex) => {
     table.string('homeTeam')
     table.string('awayTeam')
     table.string('gameNotes')
-    table.integer('visitRating').notNullable()
+    table.integer('ballparkRating').notNullable()
     table.bigInteger('userId').notNullable().unsigned().index().references('users.id')
     table.bigInteger('stadiumId').notNullable().unsigned().index().references('stadiums.id')
     table.timestamp('createdAt').notNullable().defaultTo(knex.fn.now())
