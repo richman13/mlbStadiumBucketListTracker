@@ -9,6 +9,7 @@ import SignInForm from "./authentication/SignInForm";
 import TopBar from "./layout/TopBar";
 import StadiumIndex from './StadiumIndex.js'
 import StadiumShowPage from './StadiumShowPage.js'
+import NewVisitForm from './NewVisitForm.js'
 
 
 const App = (props) => {
@@ -33,6 +34,7 @@ const App = (props) => {
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/stadiums/:id" component={StadiumShowPage} />
         <Route exact path="/user-sessions/new" component={SignInForm} />
+        {/* <AuthenticatedRoute exact path='/stadiums/:stadiumId/visits/new' component={NewVisitForm} user={currentUser}/> */}
       </Switch>
     </Router>
   );

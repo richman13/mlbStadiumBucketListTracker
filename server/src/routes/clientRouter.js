@@ -8,7 +8,8 @@ const clientRoutes = [
   "/user-sessions/new", 
   "/users/new", 
   "/stadiums",
-  "/stadiums/:id"
+  "/stadiums/:id",
+  "/stadiums/:stadiumId/visits/new"
 ];
 
 router.get(clientRoutes, (req, res) => {

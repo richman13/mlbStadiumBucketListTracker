@@ -33,7 +33,7 @@ const StadiumIndex = props => {
   })
 
   return (
-    <div className='grid-container text-center' id='category'>
+    <div className='grid-container text-center' id='stadium'>
       <h1>MLB Stadiums</h1>
       <div className="grid-x grid-margin-x small-up-2 medium-up-3">
         {stadiumTiles}
