@@ -1,6 +1,7 @@
 import express from "express"
 import objection from "objection"
 const { ValidationError } = objection
+import VisitSerializer from '../../../serializers/VisitSerializer.js'
 
 import { Visit } from "../../../models/index.js"
 
@@ -15,8 +16,8 @@ stadiumVisitsRouter.post('/', async (req, res) => {
 
   try {
     const newVisit = await Visit.query().insertAndFetch({ ...cleanBody, stadiumId })
-    // const serializedReview = await ReviewSerializer.getDetails(newVisit, newVisit.userId)
-    return res.status(201).json({ newVisit })
+    const serializedVisit = await VisitSerializer.getDetails(newVisit, newVisit.userId)
+    return res.status(201).json({ newVisit: serializedVisit })
   } catch (error){
     if (error instanceof ValidationError){
       return res.status(422).json({ errors: error.data })

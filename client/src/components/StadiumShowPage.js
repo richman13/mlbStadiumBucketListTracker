@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react' 
-import { Link } from 'react-router-dom'
-import VisitTile from './VisitTile.js'
+import translateServerErrors from '../services/translateServerErrors'
+import VisitList from './VisitList.js'
 import NewVisitForm from './NewVisitForm.js'
 
-const StadiumShowPage = props => {
+const StadiumShowPage = ( props ) => {
   const [stadium, setStadium] = useState({
    id: "",
    name: "",
@@ -11,7 +11,10 @@ const StadiumShowPage = props => {
    homeTeam: "",
    capacity: ""
   })
+  const [visits, setVisits] = useState({})
+  const [errors, setErrors] = useState({})
 
+debugger
   const stadiumId = props.match.params.id
 
   const getStadium = async () => {
@@ -84,13 +87,21 @@ debugger
           placeholder for visits
         </div>
         <div className='grid-x grid-margin-x'>
-          <div className="small-4 small-offset-4" id='new-visit-form-card'>
-            <Link to={`/stadiums/${stadiumId}/visits/new`}>
-              <div className="new-product-link-content">
-                <p>{NewVisitForm}</p>
-                <h4>{`Add a visit to ${stadiumId}`}</h4>
+          <div className="cell small-12 medium-8">
+            {/* <VisitList 
+              visits={visits}
+              user={user}
+              errors={errors}
+            /> */}
+           <div className="small-4 small-offset-4" id='new-visit-form-card'>
+            <h4>{`Add a visit to ${stadium.name}`}</h4>
+              <div className="cell small-12 medium-4">
+                <NewVisitForm
+                  addVisit={addVisit}
+                  errors={errors}
+                />
               </div>
-            </Link>
+            </div>
           </div>
         </div>
       </div>

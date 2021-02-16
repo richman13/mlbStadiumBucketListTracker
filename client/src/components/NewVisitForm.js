@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import ErrorList from './ErrorList'
 
-const NewVisitForm = (props) => {
+const NewVisitForm = ({ addVisit, errors }) => {
   const [newVisit, setNewVisit] = useState({
     ballparkRating: '',
     date: '',
@@ -101,7 +101,7 @@ const NewVisitForm = (props) => {
           <textarea
             name='gameNotes'
             onChange={handleInputChange}
-            value={newReview.gameNotes}
+            value={newVisit.gameNotes}
             className="form-field"
           />
         </label>

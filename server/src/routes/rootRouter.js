@@ -5,10 +5,12 @@ import clientRouter from "./clientRouter.js";
 import stadiumsRouter from "./api/v1/stadiumsRouter.js"
 
 const rootRouter = new express.Router();
-rootRouter.use("/", clientRouter);
 
+rootRouter.use("/", clientRouter);
 rootRouter.use("/api/v1/user-sessions", userSessionsRouter);
-rootRouter.use("/api/v1/users", usersRouter); //place your server-side routes here
+rootRouter.use("/api/v1/users", usersRouter);
 rootRouter.use("/api/v1/stadiums", stadiumsRouter)
+// rootRouter.use("/api/v1/visits", )
+
 
 export default rootRouter;

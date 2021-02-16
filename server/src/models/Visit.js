@@ -8,16 +8,16 @@ class Visit extends Model {
   static get jsonSchema() {
     return {
       type: 'object',
-      required: ['visitRanking'],
+      required: ['ballparkRating'],
       properties: {
         date: { type: 'date'},
         homeTeam: { type: 'string' },
         awayTeam: { type: 'string' },
         gameNotes: { type: 'string'},
-        visitRating: {
+        ballparkRating: {
           type: ['integer', 'string'],
           minimum: 1,
-          maximum: 5
+          maximum: 10
         }
       }
     }
