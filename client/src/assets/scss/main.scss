@@ -16,9 +16,26 @@
 #stadium-card {
   color: whitesmoke;
   background-color: rgb(150, 34, 34);
-  border-radius: 50px;
+  border-radius: 100px;
 }
 
 #stadium {
   background-color: rgb(231, 231, 241);
+}
+
+.top-bar {
+  color: black;
+  background-color: rgb(9, 9, 97);
+}
+
+.menu {
+  background-color: rgb(9, 9, 97);
+}
+
+.new-visit-form {
+  text-align: left;
+}
+
+.form-container {
+  background-color: whitesmoke;
 }

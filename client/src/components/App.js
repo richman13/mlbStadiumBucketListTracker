@@ -9,7 +9,6 @@ import SignInForm from "./authentication/SignInForm";
 import TopBar from "./layout/TopBar";
 import StadiumIndex from './StadiumIndex.js'
 import StadiumShowPage from './StadiumShowPage.js'
-import NewVisitForm from './NewVisitForm.js'
 
 
 const App = (props) => {
@@ -28,7 +27,7 @@ const App = (props) => {
       <TopBar user={currentUser} />
       <Switch>
         <Route exact path="/">
-          <h2>Hello from react</h2>
+          <h2>MLB Ballpark Visit Tracker</h2>
         </Route>
         <Route exact path='/stadiums' component={StadiumIndex} />
         <Route exact path="/users/new" component={RegistrationForm} />
