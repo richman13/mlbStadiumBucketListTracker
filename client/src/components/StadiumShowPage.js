@@ -33,6 +33,7 @@ debugger
   }
 
   const addVisit = async (visit) => {
+    debugger
     try {
       const response = await fetch(`/api/v1/stadiums/${id}/visits`, {
         method: 'POST',
@@ -82,10 +83,6 @@ debugger
     <div className='grid-container text-center' id='stadium-show' >
       <div className='showpage-content'>
         <h1>{stadium.name}</h1>
-        <div className="grid-x grid-margin-x small-up-2 medium-up-3">
-          {/* {visitTiles} */}
-          placeholder for visits
-        </div>
         <div className='grid-x grid-margin-x'>
           <div className="cell small-12 medium-8">
             {/* <VisitList 
@@ -93,7 +90,7 @@ debugger
               user={user}
               errors={errors}
             /> */}
-           <div className="small-4 small-offset-4" id='new-visit-form-card'>
+           <div className="small-4 small-offset-6" id='new-visit-form-card'>
             <h4>{`Add a visit to ${stadium.name}`}</h4>
               <div className="cell small-12 medium-4">
                 <NewVisitForm
