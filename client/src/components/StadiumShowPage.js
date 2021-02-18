@@ -3,7 +3,7 @@ import translateServerErrors from '../services/translateServerErrors'
 import VisitList from './VisitList.js'
 import NewVisitForm from './NewVisitForm.js'
 
-const StadiumShowPage = ( props ) => {
+const StadiumShowPage = ( props, user ) => {
   const [stadium, setStadium] = useState({
    id: "",
    name: "",
@@ -11,7 +11,7 @@ const StadiumShowPage = ( props ) => {
    homeTeam: "",
    capacity: ""
   })
-  const [visits, setVisits] = useState({})
+  const [visits, setVisits] = useState([])
   const [errors, setErrors] = useState({})
 
 debugger
@@ -35,7 +35,7 @@ debugger
   const addVisit = async (visit) => {
     debugger
     try {
-      const response = await fetch(`/api/v1/stadiums/${id}/visits`, {
+      const response = await fetch(`/api/v1/stadiums/${stadiumId}/visits`, {
         method: 'POST',
         headers: new Headers({
           'Content-type': 'application/json'
@@ -70,26 +70,26 @@ debugger
     getStadium()
   }, [])
 debugger
-  // const visitTiles = stadium.visits.map((visit) => {
-  //   return (
-  //     <VisitTile 
-  //     key={visit.id}
-  //     visit={visit}
-  //     />
-  //   )
-  // })
-
+  const visitTiles = visits.map((visit) => {
+    return (
+      <VisitTile 
+      key={visit.id}
+      visit={visit}
+      />
+    )
+  })
+debugger
   return (
     <div className='grid-container text-center' id='stadium-show' >
       <div className='showpage-content'>
         <h1>{stadium.name}</h1>
         <div className='grid-x grid-margin-x'>
           <div className="cell small-12 medium-8">
-            {/* <VisitList 
+            <VisitList 
               visits={visits}
               user={user}
               errors={errors}
-            /> */}
+            />
            <div className="small-4 small-offset-6" id='new-visit-form-card'>
             <h4>{`Add a visit to ${stadium.name}`}</h4>
               <div className="cell small-12 medium-4">
@@ -104,7 +104,6 @@ debugger
       </div>
     </div>
   )
-
 }
 
 export default StadiumShowPage
