@@ -15,7 +15,8 @@ const VisitList = ({visits, user, errors}) => {
   })
 
   return(
-    <div className="callout visit-tile-container">
+    // <div className="callout visit-tile-container">
+    <div className="callout grid-container text-center grid-margin-y grid-y">
       <h3>Visits</h3>
       {visitTiles}
     </div>
