@@ -11,6 +11,7 @@ import StadiumIndex from './StadiumIndex.js'
 import StadiumShowPage from './StadiumShowPage.js'
 import LandingPage from './LandingPage.js'
 import AuthenticatedRoute from './authentication/AuthenticatedRoute.js'
+import VisitShowPage from "./VisitShowPage";
 
 
 const App = (props) => {
@@ -34,6 +35,9 @@ const App = (props) => {
         <Route exact path="/stadiums/:id">
           <StadiumShowPage user={currentUser} />
         </Route>
+        <Route exact path="/visits">
+          <VisitShowPage user={currentUser} />
+        </Route> 
         <Route exact path="/user-sessions/new" component={SignInForm} />
       </Switch>
     </Router>

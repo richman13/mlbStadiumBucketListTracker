@@ -27,6 +27,13 @@ visitsRouter.post('/', async (req, res) => {
   }
 })
 
-
+visitsRouter.get('/', async (req, res) => {
+  try {
+    const visits = await Visit.query()
+    return res.status(200).json({ visits })
+  } catch (error){
+    return res.status(500).json({ errors: error })
+  }
+})
 
 export default visitsRouter

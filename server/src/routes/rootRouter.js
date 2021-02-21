@@ -13,7 +13,7 @@ rootRouter.use("/api/v1/user-sessions", userSessionsRouter);
 rootRouter.use("/api/v1/users", usersRouter);
 rootRouter.use("/api/v1/stadiums", stadiumsRouter)
 rootRouter.use("/api/v1/visits", visitsRouter)
-rootRouter.use("/api/v1/schedule", scheduleRouter)
+rootRouter.use("/api/v1/games", scheduleRouter)
 
 
 export default rootRouter;
