@@ -2,7 +2,6 @@ import React from 'react'
 import VisitTile from './VisitTile'
 
 const VisitList = ({visits, user, errors}) => {
-  debugger
   const visitTiles = visits.map(visit => {
     return(
       <VisitTile
