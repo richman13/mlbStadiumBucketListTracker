@@ -17,6 +17,7 @@ stadiumsRouter.get('/:id', async (req, res) => {
   try {
     const stadiumId = req.params.id
     const stadium = await Stadium.query().findById(stadiumId)
+    stadium.visits = await stadium.$relatedQuery('visits')
     return res.status(200).json({ stadium })
   } catch (error) {
     return res.status(500).json({ errors: error })

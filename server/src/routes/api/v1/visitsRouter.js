@@ -10,14 +10,15 @@ import cleanUserInput from "../../../services/cleanUserInput.js"
 const visitsRouter = new express.Router({ mergeParams: true })
 
 visitsRouter.post('/', async (req, res) => {
-  const stadiumId = req.params.stadiumId 
-  const body = req.body
+  const stadiumId = req.body.stadium.id 
+  const userId = req.body.userId
+  const body = req.body.visit
   const cleanBody = cleanUserInput(body)
 
   try {
-    const newVisit = await Visit.query().insertAndFetch({ ...cleanBody, stadiumId })
-    const serializedVisit = await VisitSerializer.getSummary(newVisit, newVisit.userId)
-    return res.status(201).json({ visit: serializedVisit })
+    const newVisit = await Visit.query().insertAndFetch({ ...cleanBody, stadiumId, userId })
+    //const serializedVisit = await VisitSerializer.getSummary(newVisit, newVisit.userId)
+    return res.status(201).json({ visit: newVisit })
   } catch (error){
     if (error instanceof ValidationError){
       return res.status(422).json({ errors: error.data })
