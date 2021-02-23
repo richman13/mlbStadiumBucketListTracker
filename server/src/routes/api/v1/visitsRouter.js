@@ -27,6 +27,29 @@ visitsRouter.post('/', async (req, res) => {
   }
 })
 
+visitsRouter.patch('/', async (req, res) => {
+  const body = req.body
+  const id = req.body.id 
+  try {
+    const visit = await Visit.query().updateAndFetchById(id, body)
+    return res.status(200).json({visit})
+  } catch (error) {
+    return res.status(500).json({ errors: error })
+  }
+})
+
+visitsRouter.delete('/:id', async (req, res) => {
+  debugger
+  const id = req.params.id 
+  try {
+    const visit = await Visit.query().deleteById(id)
+    return res.status(200).json({id})
+  } catch (errror) {
+    return res.status(500).json({ errors: error })
+  }
+})
+
+
 visitsRouter.get('/', async (req, res) => {
   try {
     const visits = await Visit.query()

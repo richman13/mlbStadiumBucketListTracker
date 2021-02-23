@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react' 
 import translateServerErrors from '../services/translateServerErrors'
-import VisitList from './VisitList.js'
 import VisitTile from './VisitTile.js'
 import NewVisitForm from './NewVisitForm.js'
 import { withRouter } from 'react-router-dom'
+
 
 const StadiumShowPage = (props) => {
   const [stadium, setStadium] = useState({
@@ -75,6 +75,54 @@ const StadiumShowPage = (props) => {
     }
   }
 
+  const patchVisit = async (updatedVisit) => {
+    try {
+      const response = await fetch(`/api/v1/visits`, {
+        method: 'PATCH',
+        headers: new Headers({
+          'content-type': 'application/json'
+        }),
+        body: JSON.stringify(updatedVisit)
+      })
+      if(!response.ok) {
+        if(response.status === 422) {
+          const body = await response.json()
+          const errors = translateServerErrors(body.errors)
+          setErrors(errors)
+          return false
+        } else {
+          const errorMessage = `${response.status} (${response.statusText})`
+          throw new Error(errorMessage)
+        }
+      } else {
+        getStadium()
+        setErrors({})
+        return true
+      }
+
+    } catch (error) {
+      console.error(`Error in fetch ${error.message}`)
+    }
+  }
+  
+  const visitDelete = async (visitId) => {
+    try {
+      const response = await fetch(`/api/v1/visits/${visitId}`, {
+        method: 'DELETE',
+        headers: new Headers ({
+          "Content-Type": "application/json"
+        })
+      })
+      if (!response.ok) {
+        const errorMessage = `${response.status} (${response.statusText})`
+        throw new Error(errorMessage)
+      }
+      getStadium()
+    } catch (error) {
+        console.error(`Error in fetch: ${error.message}`)
+    }
+  }
+
   useEffect(() => {
     getStadium()
   }, [])
@@ -83,21 +131,19 @@ const StadiumShowPage = (props) => {
     return (
       <VisitTile 
       key={visit.id}
+      patchVisit={patchVisit}
+      visitDelete={visitDelete}
       visit={visit}
       userId={userId}
       />
     )
   })
-/*   <VisitList 
-  visits={visits}
-  errors={errors}
-/> */
 
   return (
     <div className='grid-container text-center' id='stadium-show' >
       <div className='showpage-content'>
         <h1>{stadium.name}</h1>
-        <div className='grid-x grid-margin-x'>
+        {/* <div className='grid-x grid-margin-x grid-padding-x'> */}
           <div className="cell small-12 medium-8">
           {visitTiles}
            <div className="small-4 small-offset-6" id='new-visit-form-card'>
@@ -112,7 +158,7 @@ const StadiumShowPage = (props) => {
           </div>
         </div>
       </div>
-    </div>
+    // </div>
   )
 }
 

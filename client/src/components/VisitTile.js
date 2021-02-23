@@ -1,23 +1,65 @@
-import React from 'react'
+import React, { useState } from 'react'
+import EditingButtons from './EditingButtons'
+import EditVisitForm from './EditVisitForm'
 
 const VisitTile = (props) => {
+  const { visit, userId, patchVisit, visitDelete } = props
+
   let showVisit = true
-  if (props.visit.userId != props.userId || props.userId == undefined) {
+
+  if (visit.userId != userId || userId == undefined) {
     showVisit = false
   }
+
+  const [editable, setEditable] = useState(false)
+
+  const handleEditClick = (event) => {
+    event.preventDefault()
+    return setEditable(true)
+  }
+  const handleDeleteClick = (event) => {
+    event.preventDefault()
+    return visitDelete(visit.id)
+  }
+
+  let buttons; 
+  if (userId == visit.userId) {
+    buttons = <EditingButtons 
+        handleEditClick={handleEditClick} 
+        handleDeleteClick={handleDeleteClick}
+      />
+  }
+
+  const updateEditable = () => {
+    return setEditable(false)
+  }
+
+  if (editable) {
+    return (
+      <EditVisitForm 
+        previousVisit={visit}
+        patchVisit={patchVisit}
+        updateEditable={updateEditable}
+      />
+    )
+  }
+
   return(
     <div>
       {showVisit && 
     <div className="callout visit-tile">
       <div className="grid-x">
-        <h5> 
-          Visited On: {props.visit.date || 'Date unknown'}  
+        <h5 className="cell small-12"> 
+          Visited On: {visit.date.slice(0, 10)|| 'Date unknown'}  
         </h5>
         <p className="cell small-12">
-          Ballpark Rating: {props.visit.ballparkRating}
+          Ballpark Rating: {visit.ballparkRating}
         </p>
       </div>
-      <p>{props.visit.gameNotes}</p>
+      <p>{visit.gameNotes}</p>
+      <div className="ed-button">
+      {buttons}
+      </div>
     </div>
       }
     </div>
