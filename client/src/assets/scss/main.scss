@@ -21,8 +21,14 @@
   border-radius: 100px;
 }
 
+#stadium-card:hover {
+  border: 2px solid rgb(247, 245, 242);
+  box-shadow: 5px 3px rgb(201, 201, 201);
+}
+
 #stadium {
   background-color: rgb(231, 231, 241);
+  background-image: url(https://mlb-ballpark-visit-tracker.s3.us-east-2.amazonaws.com/dodgerstadium1920x1080op30.jpeg);
 }
 
 .top-bar {
@@ -34,22 +40,47 @@
   background-color: rgb(9, 9, 97);
 }
 
+#new-visit-form-card {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .new-visit-form {
   text-align: left;
 }
 
 .form-container {
+  width: 50%;
+  // display: flex;
+  // justify-content: center;
+  // flex-direction: column;
+  align-items: center;
+  // text-align: center;
   background-color: whitesmoke;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 2%;
+}
+
+body {
+  background-image: url(https://mlb-ballpark-visit-tracker.s3.us-east-2.amazonaws.com/dodgerstadium1920x1080op30.jpeg);
 }
 
 .landing-page {
-  background-image: url(https://mlb-ballpark-visit-tracker.s3.us-east-2.amazonaws.com/dodgerStadium1920x1080.jpg);
+  background-image: url(https://mlb-ballpark-visit-tracker.s3.us-east-2.amazonaws.com/dodgerstadium1920x1080op30.jpeg);
   height: 100vh;
   margin: -30px 0px 0px 0px;
   padding: 0px;
   // backdrop-filter: blur(3px);
   // opacity: 0.2;
-  color: red;
+  color: rgb(9, 9, 97);
   // -webkit-text-stroke: 2px white;
   background-position: center;
   background-size: cover;
@@ -58,4 +89,35 @@
 
 .landing-page-link {
   color: red;
+}
+
+.visit-tile {
+  background-color: whitesmoke;
+  border-radius: 20px;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 1rem;
+}
+
+#ed-button {
+  border-radius: 5px;
+  margin-right: 4px;
+  margin-left: 4px;
+}
+
+.grid-container {
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+}
+
+h5 {
+  align-text: center;
 }

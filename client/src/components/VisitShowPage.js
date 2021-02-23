@@ -13,7 +13,7 @@ const VisitShowPage = ({user}) => {
   const [errors, setErrors] = useState({})
 
   const { id } = useParams()
-
+debugger
   const getVisit = async () => {
     try {
       const response = await fetch(`/api/v1/visits/${id}?userId=${user.id}`)
@@ -38,11 +38,11 @@ const VisitShowPage = ({user}) => {
     <div className="visit-show">
       <div className="grid-container">
         <div className="grid-x grid-margin-x grid-padding-x">
-          <VisitList
+          {/* <VisitList
             visits={visits}
             user={user}
             errors={errors}
-          />
+          /> */}
         </div>
       </div>
     </div>
