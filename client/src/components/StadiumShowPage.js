@@ -33,9 +33,9 @@ const StadiumShowPage = (props) => {
         const error = new Error(errorMessage)
         throw (error)
       }
+      debugger
       const body = await response.json()
       setStadium(body.stadium)
-
       setVisits(body.stadium.visits)
     } catch(error){
       console.error(`Error in fetch: ${error.message}`)
