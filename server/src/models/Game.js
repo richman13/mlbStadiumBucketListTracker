@@ -8,38 +8,25 @@ class Game extends Model {
   static get jsonSchema() {
     return {
       type: 'object',
-      required: ['ballparkRating'],
+      required: ['date, homeTeam, awayTeam, gameStadiumId'],
       properties: {
         date: { type: 'date'},
         homeTeam: { type: 'string' },
         awayTeam: { type: 'string' },
-        gameNotes: { type: 'string'},
-        ballparkRating: {
-          type: ['integer', 'string'],
-          minimum: 1,
-          maximum: 10
-        }
+        gameStadiumId: { type: 'string, integer'},
       }
     }
   }
 
   static get relationMappings() {
-    const { User, Stadium } = require('./index.js')
+    const { Stadium } = require('./index.js')
 
     return {
-      user: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: User,
-        join: {
-          from: 'users.visitId',
-          to: 'visits.id'
-        }
-      },
       stadium: {
-        relation: Model.BelongsToOneRelation,
+        relation: Model.HasManyRelation,
         modelClass: Stadium,
         join: {
-          from: 'users.stadiumId',
+          from: 'games.stadiumId',
           to: 'stadiums.id'
         }
       }
