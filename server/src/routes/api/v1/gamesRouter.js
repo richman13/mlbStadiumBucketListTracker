@@ -2,9 +2,9 @@ import express from "express"
 
 import SportsDataioClient from "../../../apiClient/SportsDataioClient.js"
 
-const scheduleRouter = new express.Router()
+const gamesRouter = new express.Router()
 
-scheduleRouter.get("/", (req, res) => {
+gamesRouter.get("/", (req, res) => {
   const season = req.query.season 
 
   SportsDataioClient.getSchedule(season).then((data) => {
@@ -17,4 +17,4 @@ scheduleRouter.get("/", (req, res) => {
   })
 })
 
-export default scheduleRouter
+export default gamesRouter
